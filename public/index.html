@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#060504">
+<title>برج الصيد - المشاركون</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="logo"><img src="logo.png" alt="برج الصيد">برج <span>الصيد</span></div>
+  <div class="nav-links">
+    <a href="index.html" class="active">المشاركون</a>
+    <a href="stats.html">الإحصائيات</a>
+    <a href="login.html">الإدارة</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-title">المشاركون</div>
+  <div class="page-sub">قائمة جميع المشاركين في برج الصيد</div>
+  <div class="cards-grid" id="cardsGrid"></div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/pwa.js"></script>
+<script>
+loadParticipants();
+</script>
+</body>
+</html>

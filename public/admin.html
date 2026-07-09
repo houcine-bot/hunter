@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#060504">
+<title>برج الصيد - لوحة الإدارة</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="logo"><img src="logo.png" alt="برج الصيد">برج <span>الصيد</span></div>
+  <div class="nav-links">
+    <a href="index.html">المشاركون</a>
+    <a href="stats.html">الإحصائيات</a>
+    <a href="#" onclick="doLogout()">خروج</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-title">لوحة الإدارة</div>
+  <div class="page-sub">تحكم كامل في المشاركين والمرحلة الحالية</div>
+
+  <div class="stage-box" style="animation-delay:0.1s">
+    <div>
+      <div class="page-sub" style="margin:0 0 6px 0">المرحلة الحالية</div>
+      <input type="text" id="stageInput" class="stage-input">
+    </div>
+    <button class="btn" onclick="updateStage()">تحديث المرحلة</button>
+  </div>
+
+  <div class="top-bar-actions">
+    <button class="btn" onclick="openAddModal()">إضافة مشارك</button>
+  </div>
+
+  <div class="cards-grid" id="cardsGrid"></div>
+</div>
+
+<button class="fab" onclick="openAddModal()">+</button>
+
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <h3 id="modalTitle">تعديل مشارك</h3>
+    <input type="hidden" id="editId">
+    <div class="field">
+      <label>الاسم الكامل</label>
+      <input type="text" id="editName">
+    </div>
+    <div class="field">
+      <label>اسم حساب الفايسبوك</label>
+      <input type="text" id="editFbName">
+    </div>
+    <div class="field">
+      <label>رابط حساب الفايسبوك</label>
+      <input type="text" id="editFbLink">
+    </div>
+    <div class="field">
+      <label>رقم اللاعب</label>
+      <input type="number" id="editNumber">
+    </div>
+    <div class="field">
+      <label>النقاط</label>
+      <input type="number" id="editPoints" value="0">
+    </div>
+    <div class="field">
+      <label>العتاد</label>
+      <div id="equipmentList"></div>
+      <button type="button" class="btn btn-outline" style="width:100%;margin-top:8px" onclick="addEquipmentField()">إضافة عتاد</button>
+    </div>
+    <div class="field">
+      <label>الحالة</label>
+      <div class="status-toggle">
+        <button type="button" id="btnNaji" onclick="setStatus('naji')">ناجي</button>
+        <button type="button" id="btnMaqsi" onclick="setStatus('maqsi')">مقصي</button>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-danger" id="deleteBtn" onclick="deleteParticipant()">حذف</button>
+      <button class="btn" onclick="saveParticipant()">حفظ</button>
+    </div>
+    <div style="margin-top:12px">
+      <button class="btn btn-outline" style="width:100%" onclick="closeModal()">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/pwa.js"></script>
+<script>
+checkAuth().then(ok => {
+  if (!ok) { window.location.href = 'login.html'; }
+  else { loadAdminParticipants(); loadStage(); }
+});
+</script>
+</body>
+</html>

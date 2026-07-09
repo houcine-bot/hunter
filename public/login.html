@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#060504">
+<title>برج الصيد - تسجيل الدخول</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="login-wrap">
+  <div class="login-box">
+    <img src="logo.png" alt="برج الصيد">
+    <h2>دخول الإدارة</h2>
+    <div class="field">
+      <label>اسم المستخدم</label>
+      <input type="text" id="loginUser">
+    </div>
+    <div class="field">
+      <label>كلمة المرور</label>
+      <input type="password" id="loginPass">
+    </div>
+    <button class="btn" style="width:100%" onclick="doLogin()">دخول</button>
+    <div class="error-msg" id="loginError"></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/pwa.js"></script>
+<script>
+async function doLogin() {
+  const username = document.getElementById('loginUser').value;
+  const password = document.getElementById('loginPass').value;
+  const res = await fetch('/api/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password })
+  });
+  const data = await res.json();
+  if (data.success) {
+    window.location.href = 'admin.html';
+  } else {
+    document.getElementById('loginError').textContent = data.error || 'خطأ في تسجيل الدخول';
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#060504">
+<title>برج الصيد - الإحصائيات</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="logo"><img src="logo.png" alt="برج الصيد">برج <span>الصيد</span></div>
+  <div class="nav-links">
+    <a href="index.html">المشاركون</a>
+    <a href="stats.html" class="active">الإحصائيات</a>
+    <a href="login.html">الإدارة</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-title">الإحصائيات</div>
+  <div class="page-sub">نظرة عامة على مسار المنافسة</div>
+
+  <div class="stage-box" style="animation-delay:0.1s">
+    <div>
+      <div class="page-sub" style="margin:0 0 6px 0">المرحلة الحالية</div>
+      <div class="stage-current" id="stageValue">...</div>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-box" style="animation-delay:0.15s">
+      <div class="stat-value" id="najiCount">0</div>
+      <div class="stat-label">عدد الناجين</div>
+    </div>
+    <div class="stat-box" style="animation-delay:0.25s">
+      <div class="stat-value" id="maqsiCount">0</div>
+      <div class="stat-label">عدد المقصيين</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>الترتيب</th>
+          <th>الاسم</th>
+          <th>حساب الفايسبوك</th>
+          <th>النقاط</th>
+          <th>الحالة</th>
+        </tr>
+      </thead>
+      <tbody id="rankingBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/pwa.js"></script>
+<script>
+loadStats();
+</script>
+</body>
+</html>
