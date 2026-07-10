@@ -6,6 +6,7 @@
   box-sizing: border-box;
 }
 
+
 :root {
   --bg: #0a0805;
   --bg-secondary: #0d0b07;
@@ -69,7 +70,7 @@ body:before {
   color: var(--text);
 }
 
-/* ===== شريط التنقل ===== */
+/* ===== ???? ?????? ===== */
 .navbar {
   display: flex;
   flex-wrap: wrap;
@@ -141,7 +142,7 @@ body:before {
   border-color: var(--gold);
 }
 
-/* ===== الحاوية العامة ===== */
+/* ===== ??????? ?????? ===== */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -190,7 +191,7 @@ body:before {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== شبكة البطاقات ===== */
+/* ===== ???? ???????? ===== */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -325,7 +326,7 @@ body:before {
   border-radius: 20px;
 }
 
-/* ===== الإحصائيات ===== */
+/* ===== ?????????? ===== */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -380,47 +381,48 @@ body:before {
   font-weight: 600;
 }
 
-/* ===== صندوق المرحلة ===== */
+/* ===== ????? ??????? ===== */
 .stage-box {
   position: relative;
-  background-image: url('../images/stage-banner.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  border: none;
+  background: rgba(21, 17, 9, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 18px 30px;
-  margin: 0 auto 32px;
+  padding: 22px 30px;
+  margin-bottom: 32px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 16px;
   opacity: 0;
   animation: fadeUp 0.5s ease forwards;
-  width: min(560px, 90%);
-  aspect-ratio: 1444 / 588;
-  overflow: visible;
+  width: 100%;
+  overflow: hidden;
+}
+
+.stage-box:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--gold), var(--gold-dim));
 }
 
 .stage-box > div:first-child {
   flex: 1 1 220px;
   min-width: 0;
-  text-align: center;
-}
-
-.stage-box .page-sub {
-  display: none;
 }
 
 .stage-current {
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff2c9;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.85), 0 0 10px rgba(0,0,0,0.6);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--gold);
   word-break: break-word;
   font-family: 'Lalezar', 'Cairo', sans-serif;
-  letter-spacing: 0.5px;
 }
 
 .stage-input {
@@ -447,7 +449,7 @@ body:before {
   max-width: 200px;
 }
 
-/* ===== الجدول ===== */
+/* ===== ?????? ===== */
 .table-wrap {
   background: rgba(21, 17, 9, 0.72);
   backdrop-filter: blur(6px);
@@ -499,7 +501,7 @@ tr:hover {
   font-size: 15px;
 }
 
-/* ===== الأزرار ===== */
+/* ===== ??????? ===== */
 .btn {
   background: linear-gradient(135deg, var(--gold-bright), var(--gold));
   color: var(--accent-text);
@@ -572,7 +574,7 @@ tr:hover {
   box-shadow: 0 10px 26px rgba(212, 168, 63, 0.45);
 }
 
-/* ===== النافذة المنبثقة ===== */
+/* ===== ??????? ???????? ===== */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -693,7 +695,7 @@ tr:hover {
   flex: 1 1 120px;
 }
 
-/* ===== صفحة الدخول ===== */
+/* ===== ???? ?????? ===== */
 .login-wrap {
   min-height: 100vh;
   display: flex;
@@ -764,7 +766,7 @@ tr:hover {
   gap: 10px;
 }
 
-/* ===== خانة البحث (Uiverse-inspired, mkeyfa m3a l style dyalna) ===== */
+/* ===== ???? ????? (Uiverse-inspired, mkeyfa m3a l style dyalna) ===== */
 .search-wrap {
   position: relative;
   width: 100%;
@@ -821,16 +823,11 @@ tr:hover {
   }
 
   .stage-box {
-    width: 100%;
-    padding: 20px 24px;
+    padding: 20px;
   }
 
   .stage-box .btn {
     max-width: 100%;
-  }
-
-  .stage-current {
-    font-size: 20px;
   }
 }
 
@@ -952,7 +949,7 @@ tr:hover {
   }
 }
 
-/* ===== شارة تحميل الانتقال بين الصفحات ===== */
+/* ===== ???? ????? ???????? ??? ??????? ===== */
 .page-loader-overlay {
   position: fixed;
   inset: 0;
