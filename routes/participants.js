@@ -43,6 +43,7 @@ router.get('/', async (req, res) => {
     }));
     res.json(parsed);
   } catch (err) {
+    console.error('GET /api/participants ERROR:', err);
     res.status(500).json({ error: 'خطأ فالسيرفر' });
   }
 });
@@ -62,6 +63,7 @@ router.post('/', requireAuth, async (req, res) => {
     );
     res.json({ id: result.insertId });
   } catch (err) {
+    console.error('POST /api/participants ERROR:', err);
     res.status(500).json({ error: 'خطأ فالسيرفر' });
   }
 });
@@ -85,6 +87,7 @@ router.put('/:id', requireAuth, async (req, res) => {
     );
     res.json({ success: true });
   } catch (err) {
+    console.error('PUT /api/participants/:id ERROR:', err);
     res.status(500).json({ error: 'خطأ فالسيرفر' });
   }
 });
@@ -98,6 +101,7 @@ router.delete('/:id', requireAuth, async (req, res) => {
     await db.query('DELETE FROM participants WHERE id = ?', [req.params.id]);
     res.json({ success: true });
   } catch (err) {
+    console.error('DELETE /api/participants/:id ERROR:', err);
     res.status(500).json({ error: 'خطأ فالسيرفر' });
   }
 });
