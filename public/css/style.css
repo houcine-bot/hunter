@@ -439,7 +439,7 @@ body:before {
 }
 
 .stage-current {
-  font-size: clamp(18px, 4.5vw, 30px);
+font-size: clamp(24px, 6vw, 38px);
   font-weight: 700;
   color: #fff2c9;
   text-shadow: 0 2px 4px rgba(0,0,0,0.85), 0 0 10px rgba(0,0,0,0.6);
