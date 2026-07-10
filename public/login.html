@@ -42,6 +42,7 @@ async function doLogin() {
   });
   const data = await res.json();
   if (data.success) {
+    showPageLoader();
     window.location.href = 'admin.html';
   } else {
     document.getElementById('loginError').textContent = data.error || 'خطأ في تسجيل الدخول';

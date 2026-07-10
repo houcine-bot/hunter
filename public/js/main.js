@@ -109,6 +109,58 @@ async function checkAuth() {
 }
 
 async function doLogout() {
+  showPageLoader();
   await fetch('/api/auth/logout', { method: 'POST' });
   window.location.href = 'login.html';
 }
+
+/* ===== Page Transition Loader ===== */
+function initPageLoader() {
+  // إنشاء الـ overlay ديال اللودر مرة وحدة
+  const overlay = document.createElement('div');
+  overlay.className = 'page-loader-overlay';
+  overlay.id = 'pageLoaderOverlay';
+  overlay.innerHTML = `
+    <div class="hand-loader">
+      <div class="hand-finger"></div>
+      <div class="hand-finger"></div>
+      <div class="hand-finger"></div>
+      <div class="hand-finger"></div>
+      <div class="hand-palm"></div>
+      <div class="hand-thumb"></div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  // اعتراض كليكات الروابط الداخلية (nav-links, وغيرها)
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    // تجاهل: بلا href، روابط خارجية، #، فتح فـ تاب جديد، أو أزرار عندها onclick خاص (مثل خروج)
+    if (!href || href.startsWith('#') || href.startsWith('http') || link.target === '_blank') return;
+    if (link.hasAttribute('onclick')) return;
+
+    e.preventDefault();
+    showPageLoader();
+    setTimeout(() => { window.location.href = href; }, 350);
+  });
+
+  // إخفاء اللودر عند رجوع المستخدم بالـ back/forward button (bfcache)
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) hidePageLoader();
+  });
+}
+
+function showPageLoader() {
+  const overlay = document.getElementById('pageLoaderOverlay');
+  if (overlay) overlay.classList.add('show');
+}
+
+function hidePageLoader() {
+  const overlay = document.getElementById('pageLoaderOverlay');
+  if (overlay) overlay.classList.remove('show');
+}
+
+document.addEventListener('DOMContentLoaded', initPageLoader);
