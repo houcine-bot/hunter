@@ -29,6 +29,21 @@ body {
   direction: rtl;
   min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
+}
+
+body:before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(180deg, rgba(6,5,4,0.88) 0%, rgba(6,5,4,0.94) 100%),
+    url('../img/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .navbar {
@@ -808,3 +823,74 @@ tr:hover {
 @keyframes tap-upper-2 { 0%,50%,100% { transform: rotate(10deg) scale(0.6); } 40% { transform: rotate(50deg) scale(0.6); } }
 @keyframes tap-upper-3 { 0%,50%,100% { transform: rotate(10deg) scale(0.8); } 40% { transform: rotate(50deg) scale(0.8); } }
 @keyframes tap-upper-4 { 0%,50%,100% { transform: rotate(10deg) scale(1); } 40% { transform: rotate(50deg) scale(1); } }
+
+/* ===== Background transparency overrides (let bg image show through) ===== */
+.navbar {
+  background: rgba(11, 10, 8, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.card {
+  background: rgba(16, 14, 11, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.card.maqsi {
+  background: rgba(26, 19, 16, 0.72);
+}
+
+.stat-box {
+  background: rgba(16, 14, 11, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.stage-box {
+  background: rgba(16, 14, 11, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.table-wrap {
+  background: rgba(16, 14, 11, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+th {
+  background: rgba(20, 17, 11, 0.75);
+}
+
+tr:hover {
+  background: rgba(20, 17, 11, 0.6);
+}
+
+.modal {
+  background: rgba(16, 14, 11, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.login-box {
+  background: rgba(16, 14, 11, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.field input, .field select {
+  background: rgba(12, 10, 7, 0.75);
+}
+
+.stage-input {
+  background: rgba(12, 10, 7, 0.75);
+}
+
+.search-input {
+  background: rgba(12, 10, 7, 0.75);
+}
+
+.status-toggle button {
+  background: rgba(12, 10, 7, 0.75);
+}
