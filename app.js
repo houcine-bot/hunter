@@ -17,4 +17,4 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/participants', require('./routes/participants'));
 app.use('/api/stats', require('./routes/stats'));
 
-app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+app.listen(process.env.PORT || 3000, () => console.log('Server running'));
