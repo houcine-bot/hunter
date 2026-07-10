@@ -834,10 +834,70 @@ tr:hover {
 }
 
 @media (max-width: 600px) {
+  body {
+    padding-bottom: 74px;
+  }
+
   .navbar {
-    padding: 14px 18px;
-    flex-direction: column;
-    gap: 12px;
+    padding: 12px 18px;
+    justify-content: center;
+  }
+
+  .navbar .logo {
+    font-size: 19px;
+  }
+
+  .navbar .logo img {
+    height: 32px;
+    width: 32px;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    gap: 0;
+    flex-wrap: nowrap;
+    height: 66px;
+    background: rgba(10, 8, 5, 0.92);
+    border-top: 1px solid var(--border-soft);
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.45);
+    z-index: 300;
+  }
+
+  .nav-links a {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 4px;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    border-top: 2px solid transparent;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  .nav-links a:hover {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .nav-links a.active {
+    background: transparent;
+    color: var(--gold-bright);
+    border-top-color: var(--gold);
+  }
+
+  .fab {
+    bottom: 90px;
   }
 }
 
@@ -870,7 +930,7 @@ tr:hover {
     width: 50px;
     height: 50px;
     font-size: 22px;
-    bottom: 18px;
+    bottom: 86px;
     left: 18px;
   }
 
