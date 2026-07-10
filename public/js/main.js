@@ -45,15 +45,37 @@ function buildCard(p, index, clickable) {
   </div>`;
 }
 
-async function loadParticipants() {
-  const res = await fetch('/api/participants');
-  const data = await res.json();
+let participantsListCache = [];
+
+function renderParticipantCards(list) {
   const grid = document.getElementById('cardsGrid');
-  if (data.length === 0) {
+  if (list.length === 0) {
     grid.innerHTML = '<div class="empty-state">لا يوجد مشاركون حاليا</div>';
     return;
   }
-  grid.innerHTML = data.map((p, i) => buildCard(p, i, false)).join('');
+  grid.innerHTML = list.map((p, i) => buildCard(p, i, false)).join('');
+}
+
+async function loadParticipants() {
+  const res = await fetch('/api/participants');
+  participantsListCache = await res.json();
+  renderParticipantCards(participantsListCache);
+}
+
+function filterParticipantsList() {
+  const input = document.getElementById('searchInput');
+  if (!input) return;
+  const q = input.value.trim().toLowerCase();
+  if (!q) {
+    renderParticipantCards(participantsListCache);
+    return;
+  }
+  const filtered = participantsListCache.filter((p) => {
+    const name = (p.name || '').toLowerCase();
+    const num = p.number !== null && p.number !== undefined ? String(p.number) : '';
+    return name.includes(q) || num.includes(q);
+  });
+  renderParticipantCards(filtered);
 }
 
 let rankingCache = [];

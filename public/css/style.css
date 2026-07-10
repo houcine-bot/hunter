@@ -770,48 +770,50 @@ tr:hover {
   gap: 10px;
 }
 
+/* ===== خانة البحث (Uiverse-inspired, mkeyfa m3a l style dyalna) ===== */
 .search-wrap {
   position: relative;
   width: 100%;
-  max-width: 340px;
-  margin-bottom: 24px;
+  max-width: 280px;
+  margin: 10px 0 28px;
 }
 
 .search-input {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--border);
+  display: block;
   width: 100%;
-  padding: 17px 14px 9px;
-  background: rgba(10, 8, 5, 0.8);
-  border: 1px solid var(--border);
+  padding: 12px 2px 10px;
+  font-size: 16px;
   color: var(--text);
-  border-radius: 9px;
-  font-size: 15px;
+  border-radius: 0;
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.3s ease;
 }
 
-.search-input:focus {
+.search-input:focus,
+.search-input:not(:placeholder-shown) {
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(212, 168, 63, 0.12);
 }
 
 .search-label {
   position: absolute;
-  right: 14px;
-  top: 17px;
+  top: 12px;
+  right: 2px;
   color: var(--text-dim);
   font-size: 15px;
   pointer-events: none;
-  transition: all 0.18s ease;
   background: transparent;
+  transform-origin: right center;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .search-input:focus + .search-label,
 .search-input:not(:placeholder-shown) + .search-label {
-  top: 4px;
-  right: 12px;
-  font-size: 10.5px;
-  font-weight: 700;
   color: var(--gold);
+  font-weight: 700;
+  transform: translateY(-24px) scale(0.82);
 }
 
 @media (max-width: 768px) {
