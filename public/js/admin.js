@@ -200,6 +200,10 @@ async function deleteParticipant() {
   const id = document.getElementById('editId').value;
   if (!id) return;
 
+  const nameVal = document.getElementById('editName').value || 'هاد المشارك';
+  const sure = confirm('واش متأكد بغيتي تحذف "' + nameVal + '"؟ هاد العملية ماغاديش ترجع.');
+  if (!sure) return;
+
   const res = await fetch('/api/participants/' + id, { method: 'DELETE' });
 
   if (!res.ok) {

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Cairo:wght@400;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -21,7 +23,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
   background: var(--bg);
   color: var(--text);
   direction: rtl;
@@ -47,10 +49,11 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 400;
   letter-spacing: 1px;
   color: var(--text);
+  font-family: 'Lalezar', 'Cairo', sans-serif;
 }
 
 .logo img {
@@ -96,11 +99,13 @@ body {
 }
 
 .page-title {
-  font-size: 28px;
+  font-size: 32px;
   margin-bottom: 8px;
   opacity: 0;
   transform: translateY(-15px);
   animation: fadeDown 0.6s ease forwards;
+  font-family: 'Lalezar', 'Cairo', sans-serif;
+  letter-spacing: 1px;
 }
 
 .page-sub {
@@ -244,9 +249,10 @@ body {
 }
 
 .stat-value {
-  font-size: 36px;
-  font-weight: 700;
+  font-size: 38px;
+  font-weight: 400;
   color: var(--gold);
+  font-family: 'Lalezar', 'Cairo', sans-serif;
 }
 
 .stat-label {
@@ -277,10 +283,11 @@ body {
 }
 
 .stage-current {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 400;
   color: var(--gold);
   word-break: break-word;
+  font-family: 'Lalezar', 'Cairo', sans-serif;
 }
 
 .stage-input {
