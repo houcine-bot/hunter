@@ -40,12 +40,32 @@ function collectEquipment() {
 async function loadAdminParticipants() {
   const res = await fetch('/api/participants');
   participantsCache = await res.json();
+  renderAdminCards(participantsCache);
+}
+
+function renderAdminCards(list) {
   const grid = document.getElementById('cardsGrid');
-  if (participantsCache.length === 0) {
+  if (list.length === 0) {
     grid.innerHTML = '<div class="empty-state">لا يوجد مشاركون حاليا</div>';
     return;
   }
-  grid.innerHTML = participantsCache.map((p, i) => buildCard(p, i, true)).join('');
+  grid.innerHTML = list.map((p, i) => buildCard(p, i, true)).join('');
+}
+
+function filterAdminParticipants() {
+  const input = document.getElementById('searchInput');
+  if (!input) return;
+  const q = input.value.trim().toLowerCase();
+  if (!q) {
+    renderAdminCards(participantsCache);
+    return;
+  }
+  const filtered = participantsCache.filter((p) => {
+    const name = (p.name || '').toLowerCase();
+    const num = p.number !== null && p.number !== undefined ? String(p.number) : '';
+    return name.includes(q) || num.includes(q);
+  });
+  renderAdminCards(filtered);
 }
 
 async function loadStage() {

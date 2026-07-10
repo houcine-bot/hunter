@@ -56,6 +56,41 @@ async function loadParticipants() {
   grid.innerHTML = data.map((p, i) => buildCard(p, i, false)).join('');
 }
 
+let rankingCache = [];
+
+function renderRanking(list) {
+  const body = document.getElementById('rankingBody');
+  if (!list.length) {
+    body.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:24px">لا توجد نتائج</td></tr>';
+    return;
+  }
+  body.innerHTML = list.map((p, i) => `
+    <tr>
+      <td class="rank-num">${p.originalRank}</td>
+      <td>${escapeHtml(p.name)}</td>
+      <td>${escapeHtml(p.facebook_name)}</td>
+      <td>${escapeHtml(p.points)}</td>
+      <td>${p.status === 'maqsi' ? 'مقصي' : 'ناجي'}</td>
+    </tr>
+  `).join('');
+}
+
+function filterRanking() {
+  const input = document.getElementById('searchInput');
+  if (!input) return;
+  const q = input.value.trim().toLowerCase();
+  if (!q) {
+    renderRanking(rankingCache);
+    return;
+  }
+  const filtered = rankingCache.filter((p) => {
+    const name = (p.name || '').toLowerCase();
+    const num = p.number !== null && p.number !== undefined ? String(p.number) : '';
+    return name.includes(q) || num.includes(q);
+  });
+  renderRanking(filtered);
+}
+
 async function loadStats() {
   const res = await fetch('/api/stats');
   const data = await res.json();
@@ -63,16 +98,8 @@ async function loadStats() {
   document.getElementById('maqsiCount').textContent = data.maqsi;
   document.getElementById('stageValue').textContent = data.stage;
 
-  const body = document.getElementById('rankingBody');
-  body.innerHTML = data.ranking.map((p, i) => `
-    <tr>
-      <td class="rank-num">${i + 1}</td>
-      <td>${escapeHtml(p.name)}</td>
-      <td>${escapeHtml(p.facebook_name)}</td>
-      <td>${escapeHtml(p.points)}</td>
-      <td>${p.status === 'maqsi' ? 'مقصي' : 'ناجي'}</td>
-    </tr>
-  `).join('');
+  rankingCache = data.ranking.map((p, i) => ({ ...p, originalRank: i + 1 }));
+  renderRanking(rankingCache);
 }
 
 async function checkAuth() {

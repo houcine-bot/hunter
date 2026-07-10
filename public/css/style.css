@@ -577,6 +577,48 @@ tr:hover {
   gap: 10px;
 }
 
+.search-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  margin-bottom: 22px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 14px 8px;
+  background: #0c0a07;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: var(--gold);
+}
+
+.search-label {
+  position: absolute;
+  right: 14px;
+  top: 16px;
+  color: var(--text-dim);
+  font-size: 15px;
+  pointer-events: none;
+  transition: all 0.18s ease;
+  background: transparent;
+}
+
+.search-input:focus + .search-label,
+.search-input:not(:placeholder-shown) + .search-label {
+  top: 3px;
+  right: 12px;
+  font-size: 11px;
+  color: var(--gold);
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 28px 16px 50px;

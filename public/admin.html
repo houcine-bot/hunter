@@ -37,6 +37,11 @@
     <button class="btn" onclick="openAddModal()">إضافة مشارك</button>
   </div>
 
+  <div class="search-wrap">
+    <input type="text" id="searchInput" class="search-input" placeholder=" " oninput="filterAdminParticipants()">
+    <label for="searchInput" class="search-label">ابحث بالاسم أو الرقم...</label>
+  </div>
+
   <div class="cards-grid" id="cardsGrid"></div>
 </div>
 
